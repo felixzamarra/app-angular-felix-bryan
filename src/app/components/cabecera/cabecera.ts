@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-pie',
+  selector: 'app-cabecera',
   standalone: true,
   imports: [RouterModule],
-  templateUrl: './pie.html',
-  styleUrls: ['./pie.css'] // corregido a styleUrls
+  templateUrl: './cabecera.html',
+  styleUrls: ['./cabecera.css'] // corregido: styleUrls en plural
 })
-export class Pie {}
+export class Cabecera {}
