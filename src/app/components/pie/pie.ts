@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [RouterModule],
   templateUrl: './pie.html',
-  styleUrls: ['./pie.css'] // corregido a styleUrls
+  styleUrls: ['./pie.css']
 })
 export class Pie {}
+
