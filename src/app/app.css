@@ -1,0 +1,12 @@
+css
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.content {
+  padding: 2rem;
+  background-color: #f1f5f2;
+  min-height: calc(100vh - 160px);
+}
