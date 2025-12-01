@@ -1,63 +1,110 @@
-<div style="padding: 20px; background: #f0f0f0; min-height: 100vh;">
-  
-  <!-- Header simple -->
-  <div style="background: linear-gradient(135deg, #f7000c 0%, #eec200 100%); 
-              color: white; 
-              padding: 30px; 
-              text-align: center;
-              margin-bottom: 30px;
-              border-radius: 10px;">
-    <h1 style="font-size: 2.5rem; margin-bottom: 10px;">Tipos de Cubos</h1>
-    <p style="font-size: 1.1rem;">Descubre la variedad de cubos de Rubik</p>
-  </div>
-  
-  <!-- Grid SIMPLE -->
-  <div style="display: grid; 
-              grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
-              gap: 20px; 
-              padding: 0 20px;">
-    
-    <div *ngFor="let cubo of cubos" 
-         style="background: white; 
-                border-radius: 10px; 
-                overflow: hidden; 
-                box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+<div class="pagina-cubos">
+  <!-- Encabezado -->
+  <header class="encabezado-cubos">
+    <h1>Tipos de Cubos</h1>
+    <p>Descubre los diferentes cubos de Rubik disponibles</p>
+  </header>
+
+  <!-- Grid de cubos -->
+  <main class="contenedor-cubos">
+    <div class="grid-cubos">
+      <div *ngFor="let cubo of cubos" class="tarjeta-cubo">
+        <div class="imagen-cubo">
+          <img 
+            [src]="cubo.imagen" 
+            [alt]="cubo.nombre"
+            class="cubo-imagen">
+          <span class="badge-dificultad"
+                [class.badge-principiante]="cubo.dificultad === 'Principiante'"
+                [class.badge-fácil]="cubo.dificultad === 'Fácil'"
+                [class.badge-intermedio]="cubo.dificultad === 'Intermedio'"
+                [class.badge-avanzado]="cubo.dificultad === 'Avanzado'">
+            {{cubo.dificultad}}
+          </span>
+        </div>
+        
+        <div class="info-cubo">
+          <h3>{{cubo.nombre}}</h3>
+          <p class="descripcion">{{cubo.descripcion}}</p>
+          
+          <div class="detalles-cubo">
+            <div class="precio">{{cubo.precio}}</div>
+            <button class="boton-ver" (click)="verDetalles(cubo)">Ver Detalles</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Información adicional -->
+  <section class="informacion-extra">
+    <div class="contenedor">
+      <h2>Consejos para elegir tu cubo</h2>
+      <div class="consejos">
+        <div class="consejo">
+          <h3>Principiantes</h3>
+          <p>Comienza con un 3x3 estándar. Es el más documentado y tiene más tutoriales disponibles.</p>
+        </div>
+        <div class="consejo">
+          <h3>Speedcubing</h3>
+          <p>Para competición, busca cubos magnéticos con ajuste de tensión y lubricación incluida.</p>
+        </div>
+        <div class="consejo">
+          <h3>Colección</h3>
+          <p>Explora cubos con formas únicas como el Megaminx o el Square-1 para desafíos diferentes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal para detalles -->
+  <div class="modal" [class.active]="cuboSeleccionado !== null">
+    <div class="modal-contenido" *ngIf="cuboSeleccionado">
+      <button class="modal-cerrar" (click)="cerrarModal()">×</button>
       
-      <!-- Imagen FORZADA a verse -->
-      <div style="height: 200px; background: #e0e0e0; position: relative;">
-        <img [src]="cubo.imagen" 
-             [alt]="cubo.nombre"
-             style="width: 100%; 
-                    height: 100%; 
-                    object-fit: cover;
-                    display: block;">
-        <span style="position: absolute; 
-                     top: 10px; 
-                     right: 10px; 
-                     background: #e74c3c; 
-                     color: white; 
-                     padding: 5px 10px; 
-                     border-radius: 15px;
-                     font-size: 0.8rem;">
-          {{cubo.dificultad}}
-        </span>
+      <div class="modal-imagen">
+        <img [src]="cuboSeleccionado.imagen" [alt]="cuboSeleccionado.nombre">
       </div>
       
-      <!-- Info -->
-      <div style="padding: 20px;">
-        <h3 style="color: #2c3e50; margin-bottom: 10px;">{{cubo.nombre}}</h3>
-        <p style="color: #7f8c8d; margin-bottom: 15px; line-height: 1.4;">{{cubo.descripcion}}</p>
+      <div class="modal-info">
+        <h2>{{cuboSeleccionado.nombre}}</h2>
+        <div class="modal-dificultad">
+          <span class="badge"
+                [class.badge-principiante]="cuboSeleccionado.dificultad === 'Principiante'"
+                [class.badge-fácil]="cuboSeleccionado.dificultad === 'Fácil'"
+                [class.badge-intermedio]="cuboSeleccionado.dificultad === 'Intermedio'"
+                [class.badge-avanzado]="cuboSeleccionado.dificultad === 'Avanzado'">
+            {{cuboSeleccionado.dificultad}}
+          </span>
+        </div>
         
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <span style="font-size: 1.3rem; font-weight: bold; color: #f7000c;">{{cubo.precio}}</span>
-          <button style="background: #3498db; 
-                         color: white; 
-                         border: none; 
-                         padding: 8px 16px; 
-                         border-radius: 5px;
-                         cursor: pointer;">
-            Ver Detalles
-          </button>
+        <p class="modal-descripcion">{{cuboSeleccionado.descripcion}}</p>
+        
+        <div class="modal-detalles">
+          <div class="detalle-item">
+            <strong>Precio:</strong>
+            <span class="modal-precio">{{cuboSeleccionado.precio}}</span>
+          </div>
+          <div class="detalle-item">
+            <strong>Recomendado para:</strong>
+            <span>{{getRecomendacion(cuboSeleccionado.dificultad)}}</span>
+          </div>
+          <div class="detalle-item">
+            <strong>Tipo:</strong>
+            <span>{{cuboSeleccionado.detalles?.tipo || 'Estándar'}}</span>
+          </div>
+          <div class="detalle-item">
+            <strong>Piezas:</strong>
+            <span>{{cuboSeleccionado.detalles?.piezas || 'N/A'}}</span>
+          </div>
+          <div class="detalle-item">
+            <strong>Algoritmo:</strong>
+            <span>{{cuboSeleccionado.detalles?.algoritmo || 'Método básico'}}</span>
+          </div>
+        </div>
+        
+        <div class="modal-acciones">
+          <button class="btn-cerrar" (click)="cerrarModal()">Cerrar</button>
         </div>
       </div>
     </div>
