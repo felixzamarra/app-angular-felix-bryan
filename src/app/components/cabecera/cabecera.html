@@ -1,3 +1,4 @@
+<!-- src/app/components/cabecera/cabecera.html -->
 <nav class="navbar">
   <div class="logo">
     <a routerLink="/" class="logo-link">
@@ -5,12 +6,25 @@
       CubeMaster
     </a>
   </div>
-  
+
   <ul class="nav-links">
-    <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Inicio</a></li>
+    <li>
+      <a
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Inicio</a
+      >
+    </li>
     <li><a routerLink="/cubos" routerLinkActive="active">Tipos de Cubos</a></li>
     <li><a routerLink="/tutoriales" routerLinkActive="active">Tutoriales</a></li>
     <li><a routerLink="/tienda" routerLinkActive="active">Tienda</a></li>
-    <li><a routerLink="/comunidad" routerLinkActive="active">Comunidad</a></li>
+
+    <!-- 👇 SOLO se muestra si NO está logeado -->
+    <li *ngIf="!auth.estaLogeado()">
+      <a routerLink="/seccion-usuario" routerLinkActive="active">
+        Sección usuario
+      </a>
+    </li>
   </ul>
 </nav>
