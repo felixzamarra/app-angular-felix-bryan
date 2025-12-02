@@ -10,4 +10,4 @@ import { Pie } from "./components/pie/pie";
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
-export class AppComponent {}
+export class App {}
