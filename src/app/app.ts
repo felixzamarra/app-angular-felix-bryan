@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Cabecera } from "./components/cabecera/cabecera";
-import { Pie } from "./components/pie/pie";
+import { Pie } from "./components/pie/pie";  
 
 @Component({
   selector: 'app-root',

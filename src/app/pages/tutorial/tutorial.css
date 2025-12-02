@@ -1,0 +1,392 @@
+.tutoriales-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tutoriales-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.tutoriales-header h1 {
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: #64748b;
+  font-size: 1.1rem;
+}
+
+.tutoriales-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.tutorial-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+  border: 1px solid #e2e8f0;
+}
+
+.tutorial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+}
+
+.tutorial-image {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.tutorial-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.tutorial-image:hover img {
+  transform: scale(1.05);
+}
+
+.tutorial-nivel {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: white;
+}
+
+.nivel-principiante { background: #10b981; }
+.nivel-intermedio { background: #f59e0b; }
+.nivel-avanzado { background: #ef4444; }
+
+.tutorial-duracion {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 15px;
+  font-size: 0.75rem;
+}
+
+.tutorial-content {
+  padding: 1.5rem;
+}
+
+.tipo-cubo {
+  margin-bottom: 0.75rem;
+}
+
+.tipo-texto {
+  display: inline-block;
+  background: #eff6ff;
+  color: #3b82f6;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.tutorial-content h3 {
+  margin: 0 0 0.75rem 0;
+  color: #1e293b;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.tutorial-content h3:hover {
+  color: #3b82f6;
+}
+
+.tutorial-desc {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+  height: 40px;
+  overflow: hidden;
+}
+
+.tutorial-meta {
+  margin-bottom: 1rem;
+}
+
+.instructor {
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+.tutorial-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.ver-tutorial-btn, .youtube-btn {
+  flex: 1;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.8rem;
+  transition: all 0.3s;
+}
+
+.ver-tutorial-btn {
+  background: #3b82f6;
+  color: white;
+}
+
+.ver-tutorial-btn:hover {
+  background: #2563eb;
+}
+
+.youtube-btn {
+  background: #f1f5f9;
+  color: #64748b;
+  border: 1px solid #e2e8f0;
+}
+
+.youtube-btn:hover {
+  background: #e2e8f0;
+}
+
+/* Modal mejorado */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: modalAppear 0.3s ease-out;
+}
+
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #64748b;
+  z-index: 1001;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+.modal-close:hover {
+  background: #f1f5f9;
+}
+
+.modal-header {
+  padding: 2rem 2rem 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.modal-header h2 {
+  margin: 0 0 1rem 0;
+  color: #1e293b;
+  font-size: 1.5rem;
+}
+
+.modal-meta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.modal-meta .nivel-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: white;
+}
+
+.modal-body {
+  padding: 0 2rem 2rem;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  margin: 1.5rem 0 2rem;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.detalles-simple {
+  padding: 1rem 0;
+}
+
+.detalles-simple h3 {
+  color: #1e293b;
+  margin: 1.5rem 0 0.75rem 0;
+  font-size: 1.1rem;
+}
+
+.detalles-columnas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 1.5rem 0;
+}
+
+.columna ol, .columna ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.columna li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e2e8f0;
+  color: #475569;
+}
+
+.columna li:last-child {
+  border-bottom: none;
+}
+
+.columna ol li {
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.columna ol li::before {
+  content: counter(item) ". ";
+  counter-increment: item;
+  position: absolute;
+  left: 0;
+  color: #3b82f6;
+  font-weight: bold;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.modal-youtube-btn, .modal-cerrar-btn {
+  flex: 1;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.95rem;
+  transition: all 0.3s;
+}
+
+.modal-youtube-btn {
+  background: #ff0000;
+  color: white;
+}
+
+.modal-youtube-btn:hover {
+  background: #cc0000;
+  transform: translateY(-2px);
+}
+
+.modal-cerrar-btn {
+  background: #f1f5f9;
+  color: #64748b;
+  border: 1px solid #e2e8f0;
+}
+
+.modal-cerrar-btn:hover {
+  background: #e2e8f0;
+}
+
+@media (max-width: 768px) {
+  .tutoriales-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .tutoriales-container {
+    padding: 1rem;
+  }
+  
+  .detalles-columnas {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .modal-header,
+  .modal-body {
+    padding: 1.5rem;
+  }
+  
+  .modal-actions {
+    flex-direction: column;
+  }
+  
+  .tutorial-actions {
+    flex-direction: column;
+  }
+}

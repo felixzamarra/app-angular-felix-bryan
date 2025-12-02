@@ -1,0 +1,293 @@
+.historia-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+/* Cabecera */
+.historia-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.historia-header h1 {
+  color: #1e293b;
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: #64748b;
+  font-size: 1.1rem;
+}
+
+/* Secciones */
+.section-title {
+  color: #1e293b;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: #3b82f6;
+  border-radius: 1.5px;
+}
+
+/* Línea de tiempo */
+.timeline-section {
+  margin-bottom: 3rem;
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.timeline {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.timeline-item {
+  display: flex;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-marker {
+  flex-shrink: 0;
+  width: 50px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.marker-icon {
+  width: 40px;
+  height: 40px;
+  background: #3b82f6;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  z-index: 1;
+  box-shadow: 0 3px 6px rgba(59, 130, 246, 0.3);
+}
+
+.marker-line {
+  width: 2px;
+  height: calc(100% + 2rem);
+  background: #cbd5e1;
+  position: absolute;
+  top: 40px;
+  z-index: 0;
+}
+
+.timeline-content {
+  flex: 1;
+  padding-left: 1.5rem;
+  padding-top: 0.3rem;
+}
+
+.timeline-year {
+  display: inline-block;
+  background: #eff6ff;
+  color: #3b82f6;
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-title {
+  color: #1e293b;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.timeline-description {
+  color: #64748b;
+  line-height: 1.5;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* Datos importantes */
+.datos-section {
+  margin-bottom: 3rem;
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.datos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.dato-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s;
+}
+
+.dato-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  border-color: #3b82f6;
+  background: white;
+}
+
+.dato-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.dato-text {
+  color: #475569;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* Resumen */
+.resumen-section {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  color: white;
+  padding: 2.5rem;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.resumen-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.resumen-text {
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+}
+
+.resumen-stats {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.stat {
+  text-align: center;
+  min-width: 100px;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #60a5fa;
+  margin-bottom: 0.3rem;
+}
+
+.stat-label {
+  color: #94a3b8;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .historia-container {
+    padding: 1.5rem 1rem;
+  }
+  
+  .historia-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .timeline-section,
+  .datos-section {
+    padding: 1.5rem;
+  }
+  
+  .datos-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .timeline-item {
+    margin-bottom: 1.5rem;
+  }
+  
+  .timeline-marker {
+    width: 40px;
+  }
+  
+  .marker-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+  
+  .timeline-content {
+    padding-left: 1rem;
+  }
+  
+  .resumen-section {
+    padding: 2rem 1.5rem;
+  }
+  
+  .resumen-stats {
+    gap: 1.5rem;
+  }
+  
+  .stat-number {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.3rem;
+  }
+  
+  .timeline-title {
+    font-size: 1.1rem;
+  }
+  
+  .resumen-text {
+    font-size: 1rem;
+  }
+}

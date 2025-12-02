@@ -1,0 +1,41 @@
+<div class="historia-container">
+  
+  <!-- Cabecera con el título -->
+  <header class="historia-header">
+    <h1>Historia del Cubo de Rubik</h1>
+    <p class="subtitle">De herramienta educativa a fenómeno global</p>
+  </header>
+
+  <!-- Línea temporal -->
+  <section class="timeline-section">
+    <h2 class="section-title">Línea de Tiempo</h2>
+    
+    <div class="timeline">
+      <div *ngFor="let event of timeline; let i = index" class="timeline-item">
+        <div class="timeline-marker">
+          <span class="marker-icon">{{event.icon}}</span>
+          <div class="marker-line" *ngIf="i !== timeline.length - 1"></div>
+        </div>
+        
+        <div class="timeline-content">
+          <div class="timeline-year">{{event.year}}</div>
+          <h3 class="timeline-title">{{event.title}}</h3>
+          <p class="timeline-description">{{event.description}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Datos importantes en grid -->
+  <section class="datos-section">
+    <h2 class="section-title">Curiosidades</h2>
+    
+    <div class="datos-grid">
+      <div *ngFor="let dato of datosImportantes" class="dato-card">
+        <div class="dato-icon">{{dato.icon}}</div>
+        <div class="dato-text">{{dato.text}}</div>
+      </div>
+    </div>
+  </section>
+
+</div>
