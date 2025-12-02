@@ -12,14 +12,22 @@ export class Cubos {
   
   cuboSeleccionado: any = null;
   
+  /**
+   * Array con cada cubo
+   * 
+   * Cada uno lleva una imágen desde un URL específico
+   * La sección detalles se abre al pulsar el botón
+   */
   cubos = [
     {
+      // Propiedades de cada objeto
       id: 1,
       nombre: 'Cubo 3x3',
       descripcion: 'El clásico cubo de Rubik. Perfecto para empezar.',
       dificultad: 'Principiante',
       imagen: 'https://images.pexels.com/photos/19677/pexels-photo.jpg',
       precio: '15.99€',
+      // Detalles es un objeto Anidado
       detalles: {
         tipo: 'Estándar',
         piezas: 26,
@@ -105,14 +113,17 @@ export class Cubos {
     }
   ];
   
+  // Abrir modal
   verDetalles(cubo: any) {
     this.cuboSeleccionado = cubo;
   }
 
+  // Cerrar modal
   cerrarModal() {
     this.cuboSeleccionado = null;
   }
 
+  // Sección deabajo con algunos tips para cada nivel de dificultad
   getRecomendacion(dificultad: string): string {
     if (dificultad === 'Principiante') return 'Nuevos en el mundo del cubing';
     if (dificultad === 'Fácil') return 'Niños y principiantes avanzados';
@@ -121,8 +132,4 @@ export class Cubos {
     return 'Todos los niveles';
   }
 
-  manejarErrorImagen(event: any) {
-    console.log('Error cargando imagen');
-    event.target.style.display = 'none';
-  }
 }

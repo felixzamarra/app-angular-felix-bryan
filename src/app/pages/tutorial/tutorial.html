@@ -1,0 +1,107 @@
+<div class="tutoriales-container">
+  <div class="tutoriales-header">
+    <h1>🎓 Tutoriales de Cubos</h1>
+    <p class="subtitle">Aprende a resolver cada tipo de cubo con estos tutoriales paso a paso</p>
+  </div>
+
+  <div class="tutoriales-grid">
+    <div *ngFor="let tutorial of tutoriales" class="tutorial-card">
+      <div class="tutorial-image">
+        <img 
+          [src]="tutorial.imagen" 
+          [alt]="tutorial.titulo"
+          (click)="verDetalles(tutorial)">
+        <div class="tutorial-nivel" [class]="'nivel-' + tutorial.nivel.toLowerCase()">
+          {{tutorial.nivel}}
+        </div>
+        <div class="tutorial-duracion">
+          ⏱️ {{tutorial.duracion}}
+        </div>
+      </div>
+      
+      <div class="tutorial-content">
+        <div class="tipo-cubo">
+          <span class="tipo-texto">{{tutorial.tipoCubo}}</span>
+        </div>
+        
+        <h3 (click)="verDetalles(tutorial)">{{tutorial.titulo}}</h3>
+        <p class="tutorial-desc">{{tutorial.descripcion}}</p>
+        
+        <div class="tutorial-meta">
+          <span class="instructor">
+            👨‍🏫 {{tutorial.instructor}}
+          </span>
+        </div>
+        
+        <div class="tutorial-actions">
+          <button class="ver-tutorial-btn" (click)="verDetalles(tutorial)">
+            ▶️ Ver Detalles
+          </button>
+          <button class="youtube-btn" (click)="abrirEnYouTube(tutorial.videoId)">
+            YouTube ↗️
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de detalles -->
+  <div *ngIf="tutorialSeleccionado" class="modal-overlay" (click)="cerrarModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <button class="modal-close" (click)="cerrarModal()">×</button>
+      
+      <div class="modal-header">
+        <h2>{{tutorialSeleccionado.titulo}}</h2>
+        <div class="modal-meta">
+          <span class="nivel-badge" [class]="'nivel-' + tutorialSeleccionado.nivel.toLowerCase()">
+            {{tutorialSeleccionado.nivel}}
+          </span>
+          <span>⏱️ {{tutorialSeleccionado.duracion}}</span>
+          <span>👨‍🏫 {{tutorialSeleccionado.instructor}}</span>
+          <span>🧩 {{tutorialSeleccionado.tipoCubo}}</span>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div class="video-container">
+          <iframe 
+            [src]="getVideoUrl(tutorialSeleccionado.videoId)" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+        
+        <div class="detalles-simple">
+          <h3>📝 Descripción</h3>
+          <p>{{tutorialSeleccionado.descripcion}}</p>
+          
+          <div class="detalles-columnas">
+            <div class="columna">
+              <h3>📋 Pasos del Tutorial</h3>
+              <ol>
+                <li *ngFor="let paso of tutorialSeleccionado.pasos">{{paso}}</li>
+              </ol>
+            </div>
+            
+            <div class="columna">
+              <h3>🧰 Material Necesario</h3>
+              <ul>
+                <li *ngFor="let material of tutorialSeleccionado.materialNecesario">{{material}}</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="modal-actions">
+            <button class="modal-youtube-btn" (click)="abrirEnYouTube(tutorialSeleccionado.videoId)">
+              Ver en YouTube ↗️
+            </button>
+            <button class="modal-cerrar-btn" (click)="cerrarModal()">
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
