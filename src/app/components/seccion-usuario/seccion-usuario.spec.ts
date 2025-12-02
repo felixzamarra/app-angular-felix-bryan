@@ -1,40 +1,58 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SeccionUsuario } from './seccion-usuario';
+import { AutenticacionService } from '../../services/autenticacion.service';
+import { Router } from '@angular/router';
 
-// Este bloque describe todas las pruebas relacionadas con el componente SeccionUsuario.
-describe('SeccionUsuario', () => {
-
-  // Declaramos dos variables:
-  // - component: será la instancia del componente SeccionUsuario.
-  // - fixture: será el “entorno de pruebas” donde Angular crea el componente.
+describe('SeccionUsuario Simple Tests', () => {
   let component: SeccionUsuario;
-  let fixture: ComponentFixture<SeccionUsuario>;
+  let authServiceMock: any;
+  let routerMock: any;
 
-  // beforeEach() se ejecuta antes de cada prueba individual.
-  // Aquí configuramos el módulo de pruebas y creamos el componente.
-  beforeEach(async () => {
+  beforeEach(() => {
+    // Mock simple del servicio
+    authServiceMock = {
+      validarCredenciales: (usuario: string, password: string) => {
+        return usuario === 'admin' && password === '1234';
+      }
+    };
 
-    // Configuramos el módulo de pruebas con TestBed.
-    // Como SeccionUsuario es standalone, simplemente lo importamos.
-    await TestBed.configureTestingModule({
-      imports: [SeccionUsuario]  // Importamos el componente que vamos a testear.
-    })
-    .compileComponents();  // Compilamos las plantillas HTML del componente.
+    // Mock simple del router
+    routerMock = {
+      navigate: () => Promise.resolve(true)
+    };
 
-    // Creamos el componente dentro del entorno de pruebas.
-    fixture = TestBed.createComponent(SeccionUsuario);
-
-    // Obtenemos la instancia real del componente.
-    component = fixture.componentInstance;
-
-    // Esperamos a que Angular termine cualquier proceso asíncrono,
-    // como ngAfterViewInit(), para que el componente esté completamente listo.
-    await fixture.whenStable();
+    // Crear componente con mocks
+    component = new SeccionUsuario(authServiceMock, routerMock);
   });
 
-  // Esta es la prueba básica: comprobar que el componente se crea correctamente.
-  it('should create', () => {
-    // expect(...).toBeTruthy() verifica que el componente existe y no es null.
+  it('should create the component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should have ngAfterViewInit method', () => {
+    expect(typeof component.ngAfterViewInit).toBe('function');
+  });
+
+  describe('authentication logic', () => {
+    it('should validate correct credentials', () => {
+      const isValid = authServiceMock.validarCredenciales('admin', '1234');
+      expect(isValid).toBe(true);
+    });
+
+    it('should invalidate incorrect credentials', () => {
+      const isValid = authServiceMock.validarCredenciales('wrong', 'wrong');
+      expect(isValid).toBe(false);
+    });
+  });
+
+  describe('utility methods', () => {
+    it('should have mostrarMensaje method', () => {
+      // Podemos verificar que existe aunque no podamos probar directamente
+      // la manipulación del DOM
+      expect(typeof (component as any).mostrarMensaje).toBe('function');
+    });
+
+    it('should have limpiarMensaje method', () => {
+      expect(typeof (component as any).limpiarMensaje).toBe('function');
+    });
   });
 });

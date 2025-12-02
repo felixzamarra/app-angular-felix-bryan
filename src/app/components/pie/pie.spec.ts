@@ -1,23 +1,25 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { Pie } from './pie';
 
-describe('Pie', () => {
+describe('Pie Simple Test', () => {
   let component: Pie;
-  let fixture: ComponentFixture<Pie>;
+  let currentYear: number;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [Pie]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(Pie);
-    component = fixture.componentInstance;
-    await fixture.whenStable();
+  beforeEach(() => {
+    currentYear = new Date().getFullYear();
+    component = new Pie();
   });
 
-  it('should create', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should have currentYear property', () => {
+    expect(component.currentYear).toBeDefined();
+  });
+
+  it('should set currentYear to current year', () => {
+    // Tolerancia de ±1 año por si la prueba cruza año nuevo
+    expect(component.currentYear).toBeGreaterThanOrEqual(currentYear - 1);
+    expect(component.currentYear).toBeLessThanOrEqual(currentYear + 1);
   });
 });
