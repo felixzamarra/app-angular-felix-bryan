@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Cabecera } from "./components/cabecera/cabecera";
-import { Pie } from "./components/pie/pie";
+import { Pie } from "./components/pie/pie";  
 
 @Component({
   selector: 'app-root',
@@ -10,4 +10,4 @@ import { Pie } from "./components/pie/pie";
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
-export class AppComponent {}
+export class App {}

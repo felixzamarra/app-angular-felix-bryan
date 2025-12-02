@@ -2,8 +2,7 @@
 <nav class="navbar">
   <div class="logo">
     <a routerLink="/" class="logo-link">
-      <span class="logo-icon">🧊</span>
-      CubeMaster
+      CUBE MASTER
     </a>
   </div>
 
@@ -16,14 +15,14 @@
         >Inicio</a
       >
     </li>
-    <li><a routerLink="/cubos" routerLinkActive="active">Tipos de Cubos</a></li>
+    <li><a routerLink="/cubos" routerLinkActive="active">Cubos</a></li>
     <li><a routerLink="/tutoriales" routerLinkActive="active">Tutoriales</a></li>
-    <li><a routerLink="/tienda" routerLinkActive="active">Tienda</a></li>
+    <li><a routerLink="/historia" routerLinkActive="active">Historia</a></li>
 
     <!-- 👇 SOLO se muestra si NO está logeado -->
     <li *ngIf="!auth.estaLogeado()">
       <a routerLink="/seccion-usuario" routerLinkActive="active">
-        Sección usuario
+        Usuario
       </a>
     </li>
   </ul>

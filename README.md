@@ -1,59 +1,45 @@
-# AppBryanFelix
+# CubeMaster - Tienda de Cubos de Rubik
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.0.
+Una aplicación web Angular para explorar y aprender sobre diferentes tipos de cubos de Rubik, con sistema de autenticación y tutoriales interactivos.
 
-## Development server
 
-To start a local development server, run:
 
-```bash
-ng serve
-```
+##  Características Principales
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+###  Página de Inicio
+- Diseño moderno y responsive
+- Navegación intuitiva entre secciones
+- Enlaces directos a todas las funcionalidades
 
-## Code scaffolding
+###  Catálogo de Cubos
+- 6 tipos diferentes de cubos (2x2, 3x3, 4x4, 5x5, Pyraminx, Megaminx)
+- Información detallada de cada cubo (precio, dificultad, características)
+- Modal interactivo para ver detalles completos
+- Imágenes de referencia para cada modelo
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+###  Tutoriales
+- Video-tutoriales de YouTube integrados
+- Organizados por nivel de dificultad
+- Pasos detallados para cada tipo de cubo
+- Información sobre instructores y duración
 
-```bash
-ng generate component component-name
-```
+###  Historia del Cubo de Rubik
+- Línea de tiempo interactiva
+- Curiosidades y datos importantes
+- Desde su creación en 1974 hasta la actualidad
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+###  Sistema de Usuario
+- Registro seguro con validación de contraseñas
+- Inicio de sesión con usuarios predefinidos
+- Autenticación con PBKDF2 para seguridad
+- Gestión de sesión (login/logout)
 
-```bash
-ng generate --help
-```
+##   Tecnologías Utilizadas
 
-## Building
+- **Frontend**: Angular 21.0.0
+- **Estilos**: CSS3 (con diseño responsive)
+- **Testing**: Framework de testing de Angular
+- **Seguridad**: CryptoJS para hashing de contraseñas
+- **Despliegue**: Angular CLI
 
-To build the project run:
 
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
