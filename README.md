@@ -41,5 +41,3 @@ Una aplicación web Angular para explorar y aprender sobre diferentes tipos de c
 - **Testing**: Framework de testing de Angular
 - **Seguridad**: CryptoJS para hashing de contraseñas
 - **Despliegue**: Angular CLI
-
-
